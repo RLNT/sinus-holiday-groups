@@ -1,0 +1,17 @@
+{
+  "name": "sinus-template",
+  "version": "1.0.0",
+  "description": "With this script, the bot will automatically ...",
+  "license": "GNU GPL v3.0",
+  "author": "RLNT",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "sinusbot-scripting-engine": "^1.0.18"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "prettier": "^2.1.2",
+    "prettier-plugin-package": "^1.2.0"
+  }
+}
