@@ -1,7 +1,7 @@
 {
-  "name": "sinus-template",
+  "name": "sinus-holiday-groups",
   "version": "1.0.0",
-  "description": "With this script, the bot will automatically ...",
+  "description": "With this script, the bot will automatically assign servergroups on specific days.",
   "license": "GNU GPL v3.0",
   "author": "RLNT",
   "main": "",
@@ -10,8 +10,8 @@
     "sinusbot-scripting-engine": "^1.0.18"
   },
   "devDependencies": {
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "prettier": "^2.1.2",
-    "prettier-plugin-package": "^1.2.0"
+    "prettier-plugin-package": "^1.3.0"
   }
 }

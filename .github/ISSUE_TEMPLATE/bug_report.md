@@ -49,5 +49,5 @@ The SinusBot version can be found in the webinterface in the about tab.
 ### Additional Context
 <!--
 If applicable, add screenshots and/or logs to help explaining your problem.
-If you have any additional scripts installed to the bot that could interfer with staff-list, list them here as well.
+If you have any additional scripts installed to the bot that could interfer with holiday-groups, list them here as well.
 -->

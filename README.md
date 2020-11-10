@@ -1,6 +1,6 @@
-# **Sinus Template**
+# **Holiday Groups**
 
-> A [SinusBot][sinus] script that will automatically ...
+> A [SinusBot][sinus] script that will automatically assign servergroups on specific days.
 
 [![](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)][resource-page]
 [![](https://forthebadge.com/images/badges/made-with-javascript.svg)][resource-page]
@@ -22,7 +22,7 @@ If you want to request a script for personal use or if you just have a good idea
         <strong>Table of Contents (click to expand)</strong>
     </summary>
 
-- [**Sinus Template**](#sinus-template)
+- [**Holiday Groups**](#holiday-groups)
   - [**📑 Overview**](#-overview)
   - [**🔧 Installation**](#-installation)
   - [**📕 History**](#-history)
@@ -32,17 +32,11 @@ If you want to request a script for personal use or if you just have a good idea
 
 
 ## **📑 Overview**
-This is a script for the [SinusBot][sinus]. It will automatically ...
+This is a script for the [SinusBot][sinus]. It will automatically assign servergroups to clients on specific days.
 
-It can be used to ...
+It can be used to assign special groups to users who joined on specific days like Christmas.
 
-<details>
-    <summary>
-        <strong>Preview (click to expand)</strong>
-    </summary>
-
-![preview](images/preview.png)
-</details>
+You can decide if the group is only a one-time-only reward or if the event is annually.
 
 
 ## **🔧 Installation**
@@ -51,11 +45,11 @@ It can be used to ...
 2. Drop it in the scripts folder of your [SinusBot][sinus].
 3. Start/Restart the bot.
 4. Navigate to the script settings.
-5. Configure it to your liking (we recommend using [this guide][config-guide]), activate and save it and then restart the bot instance.
+5. Configure it to your liking, activate and save it and then restart the bot instance.
 
 
 ## **📕 History**
-This script was requested by [Anyone][requester].
+This script was requested by [EinfachRobin][requester].
 
 
 ## **⏰ Changelog**
@@ -69,9 +63,9 @@ This project is licensed under the [GNU GPL v3.0][license].
 <!-- Links -->
 [sinus]: https://www.sinusbot.com/
 [discord]: https://discordapp.com/invite/Q3qxws6
-[resource-page]: https://forum.sinusbot.com/resources/todo
-[releases]: https://github.com/RLNT/sinus-template/releases
+[resource-page]: https://forum.sinusbot.com/resources/holiday-groups
+[releases]: https://github.com/RLNT/sinus-holiday-groups/releases
 [config-guide]: CONFIGURATION.md
-[requester]: https://forum.sinusbot.com/members/anyone/
+[requester]: https://forum.sinusbot.com/members/einfachrobin.1563/
 [changelog]: CHANGELOG.md
 [license]: LICENSE.md

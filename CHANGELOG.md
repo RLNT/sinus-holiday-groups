@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Released]
 
-## [1.0.0] - 20XX-XX-XX
+## [1.0.0] - 2020-XX-XX
 
 - initial release
 
@@ -22,6 +22,6 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 [Semantic Versioning]: https://semver.org/
 
 <!-- Versions -->
-[Unreleased]: https://github.com/RLNT/sinus-template/compare/v1.0.0...HEAD
-[Released]: https://github.com/RLNT/sinus-template/releases
-[1.0.0]: https://github.com/RLNT/sinus-template/releases/v1.0.0
+[Unreleased]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.0...HEAD
+[Released]: https://github.com/RLNT/sinus-holiday-groups/releases
+[1.0.0]: https://github.com/RLNT/sinus-holiday-groups/releases/v1.0.0
