@@ -4,6 +4,8 @@
 
 ---
 
+<br>
+
 <!-- Table of Contents -->
 <details>
     <summary>
@@ -16,7 +18,6 @@
   - [**Group Options**](#group-options)
 </details>
 
----
 
 ## **How does the script operate?**
 A good start to configure a script is to understand its functionality. Here are a few small points which are important if you want to set everything up correctly.
@@ -27,7 +28,6 @@ A good start to configure a script is to understand its functionality. Here are 
 4. Clients and groups can be blacklisted from the whole script. They won't be counted at all.
 5. You can also notify clients when they joined on a special date. That way, you can say stuff like `Merry Christmas!`
 
----
 
 ## **General Options**
 The first section is all about the general options. You configure every basic aspect of the script here.
@@ -75,7 +75,6 @@ Please click the option you want to configure to get more information.
 - this means the group also gets no notifications
 </details>
 
----
 
 ## **Group Options**
 The second and last section is all about the holiday groups. You can set individual settings for each group here.
