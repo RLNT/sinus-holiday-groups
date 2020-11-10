@@ -15,7 +15,7 @@ Is your pull request related to an issue?
 If so, mention it here. Only provide the link to it. You can also provide multiple links if your pull request is related to multiple issues.
 Otherwise delete this section.
 -->
-https://github.com/RLNT/sinus-template/issues/0
+https://github.com/RLNT/sinus-holiday-groups/issues/0
 
 ### Proposed Changes
 <!--
