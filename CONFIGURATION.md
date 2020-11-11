@@ -141,10 +141,10 @@ Please click the option you want to configure to get more information.
 *Details*:
 - required option | default value: `none`
 - enter the year
+- this option is only shown if you selected `Once` for the *Annually*
 
 *Info*:
 - defines the year for the date
-- this option will be ignored if you selected `Once` for *Annually*
 - if it's not possible to form a valid date, the whole section will be skipped
 </details>
 <details>
@@ -168,6 +168,10 @@ Please click the option you want to configure to get more information.
 *Details*:
 - semi-required option | default value: `Merry Christmas! Thanks for joining us today.`
 - enter the message text
+- available placeholders:
+  - %name% - the name of the client who got the group(s)
+  - %amount% - the amount of groups the client got on the specific date; if they already have one of the groups, it won't be counted towards that number
+  - %lb% - a linebreak, same like pressing the *Enter-key* in a text file
 
 *Info*:
 - defines the text which is used in the notification for the client
