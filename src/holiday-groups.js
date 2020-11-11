@@ -91,7 +91,13 @@ registerPlugin(
                         title: 'Year > Define the year when the holiday group(s) should be assigned! This option will be ignored if you chose it to be annually. (*)',
                         indent: 2,
                         type: 'number',
-                        placeholder: '2021'
+                        placeholder: '2021',
+                        conditions: [
+                            {
+                                field: 'annually',
+                                value: 0
+                            }
+                        ]
                     },
                     {
                         name: 'messageType',
@@ -102,7 +108,8 @@ registerPlugin(
                     },
                     {
                         name: 'message',
-                        title: 'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*]',
+                        title:
+                            'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*] | placeholders: %name% - client name, %lb% - line break',
                         indent: 2,
                         type: 'multiline',
                         placeholder: 'Merry Christmas! Thanks for joining us today.'
@@ -138,6 +145,7 @@ registerPlugin(
         // GLOBAL VARS
         let todayFull, todaySimple, todayAnnual;
         let groups = [];
+        let dates = [];
 
         // CONFIG OPTIONS
         let config = {
@@ -247,6 +255,19 @@ registerPlugin(
         }
 
         /**
+         * Handles the initial client processing when the bot connects or
+         * the date changes.
+         * @returns {void} > nothing
+         */
+        function initialProcess() {
+            if (dates.includes(todaySimple) || dates.includes(todayAnnual)) {
+                backend.getClients().forEach(client => {
+                    processClient(client);
+                });
+            }
+        }
+
+        /**
          * Handles the whole process of checking a client on specific events
          * The function does blacklist checks, adds the client to the specific groups
          * and also notifies the client when groups were assigned to them.
@@ -282,9 +303,9 @@ registerPlugin(
 
                 if (!entry.messageType || !addedGroups) return;
                 if (entry.messageType == 0) {
-                    client.poke(entry.message);
+                    client.poke(entry.message.replace('%name%', client.name()));
                 } else {
-                    client.chat(entry.message);
+                    client.chat(entry.message.replace('%name%', client.name()).replace('%lb%', '\n'));
                 }
             });
         }
@@ -332,7 +353,7 @@ registerPlugin(
         function main() {
             // VARIABLES
             groups = validateGroups();
-            const dates = groups.map(group => group.date);
+            dates = groups.map(group => group.date);
 
             // exit the script if no valid holiday groups were found
             if (!groups.length) return log('There are no valid holiday groups set in your script configuration! There might be further output in the log. Deactivating script...');
@@ -346,15 +367,14 @@ registerPlugin(
             // start interval to check for a new date
             setInterval(() => {
                 const today = new Date();
-                if (todaySimple !== `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`) updateDate();
+                if (todaySimple !== `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`) {
+                    updateDate();
+                    initialProcess();
+                }
             }, config.interval * 1000);
 
             // check if groups need to be assigned on start
-            if (dates.includes(todaySimple) || dates.includes(todayAnnual)) {
-                backend.getClients().forEach(client => {
-                    processClient(client);
-                });
-            }
+            initialProcess();
 
             /**
              * MOVE EVENT
