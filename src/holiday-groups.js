@@ -220,7 +220,7 @@ registerPlugin(
 
                 // apply defaults to messages
                 if (!group.messageType || group.messageType == 2) group.messageType = false;
-                if (!group.message) group.message = 'Merry Christmas! Thanks for joining us today.';
+                if (group.messageType && (!group.message || group.message === '')) return problemGroups.push(index);
 
                 // if all error checks passed, mark it as valid
                 groups.push(group);
