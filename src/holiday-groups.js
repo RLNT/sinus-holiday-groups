@@ -108,7 +108,8 @@ registerPlugin(
                     },
                     {
                         name: 'message',
-                        title: 'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*]',
+                        title:
+                            'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*] | placeholders: %name% - client name, %lb% - line break',
                         indent: 2,
                         type: 'multiline',
                         placeholder: 'Merry Christmas! Thanks for joining us today.'
@@ -288,9 +289,9 @@ registerPlugin(
 
                 if (!entry.messageType || !addedGroups) return;
                 if (entry.messageType == 0) {
-                    client.poke(entry.message);
+                    client.poke(entry.message.replace('%name%', client.name()));
                 } else {
-                    client.chat(entry.message);
+                    client.chat(entry.message.replace('%name%', client.name()).replace('%lb%', '\n'));
                 }
             });
         }
