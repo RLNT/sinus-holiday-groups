@@ -263,8 +263,11 @@ registerPlugin(
             // check what groups need to be added on the current date
             let fittingEntries = [];
             groups.forEach(group => {
-                if (group.date === todaySimple) return (fittingEntries = fittingEntries.concat(group));
-                if (group.annual && group.date === todayAnnual) return (fittingEntries = fittingEntries.concat(group));
+                if (group.annually) {
+                    if (group.date === todayAnnual) return (fittingEntries = fittingEntries.concat(group));
+                } else {
+                    if (group.date === todaySimple) return (fittingEntries = fittingEntries.concat(group));
+                }
             });
 
             // add groups to client and notify
