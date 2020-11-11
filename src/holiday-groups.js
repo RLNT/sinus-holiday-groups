@@ -19,6 +19,10 @@ registerPlugin(
                 title: 'All fields that are marked with (*) are required, fields with [*] are semi-required and all others are optional and have a default value.'
             },
             {
+                name: 'configuration',
+                title: 'A guide how to configure the script to your needs can be found here: https://github.com/RLNT/sinus-holiday-groups/blob/master/CONFIGURATION.md'
+            },
+            {
                 name: 'spacer0',
                 title: ''
             },
