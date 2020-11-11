@@ -145,6 +145,7 @@ registerPlugin(
         // GLOBAL VARS
         let todayFull, todaySimple, todayAnnual;
         let groups = [];
+        let dates = [];
 
         // CONFIG OPTIONS
         let config = {
@@ -254,6 +255,19 @@ registerPlugin(
         }
 
         /**
+         * Handles the initial client processing when the bot connects or
+         * the date changes.
+         * @returns {void} > nothing
+         */
+        function initialProcess() {
+            if (dates.includes(todaySimple) || dates.includes(todayAnnual)) {
+                backend.getClients().forEach(client => {
+                    processClient(client);
+                });
+            }
+        }
+
+        /**
          * Handles the whole process of checking a client on specific events
          * The function does blacklist checks, adds the client to the specific groups
          * and also notifies the client when groups were assigned to them.
@@ -339,7 +353,7 @@ registerPlugin(
         function main() {
             // VARIABLES
             groups = validateGroups();
-            const dates = groups.map(group => group.date);
+            dates = groups.map(group => group.date);
 
             // exit the script if no valid holiday groups were found
             if (!groups.length) return log('There are no valid holiday groups set in your script configuration! There might be further output in the log. Deactivating script...');
@@ -353,15 +367,14 @@ registerPlugin(
             // start interval to check for a new date
             setInterval(() => {
                 const today = new Date();
-                if (todaySimple !== `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`) updateDate();
+                if (todaySimple !== `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`) {
+                    updateDate();
+                    initialProcess();
+                }
             }, config.interval * 1000);
 
             // check if groups need to be assigned on start
-            if (dates.includes(todaySimple) || dates.includes(todayAnnual)) {
-                backend.getClients().forEach(client => {
-                    processClient(client);
-                });
-            }
+            initialProcess();
 
             /**
              * MOVE EVENT
