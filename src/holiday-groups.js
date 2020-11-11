@@ -19,6 +19,10 @@ registerPlugin(
                 title: 'All fields that are marked with (*) are required, fields with [*] are semi-required and all others are optional and have a default value.'
             },
             {
+                name: 'configuration',
+                title: 'A guide how to configure the script to your needs can be found here: https://github.com/RLNT/sinus-holiday-groups/blob/master/CONFIGURATION.md'
+            },
+            {
                 name: 'spacer0',
                 title: ''
             },
@@ -204,7 +208,8 @@ registerPlugin(
                 if (!group.annually && !group.year) return problemGroups.push(index);
 
                 // check if holiday group ids point to valid groups on teamspeak
-                if (group.ids.some(id => backend.getServerGroupByID(id) === undefined)) return problemGroups.push(index);
+                group.ids = group.ids.filter(id => backend.getServerGroupByID(id) !== undefined);
+                if (!group.ids.length) return problemGroups.push(index);
 
                 // use config entries to form a proper date
                 if (!group.annually) {
@@ -215,14 +220,14 @@ registerPlugin(
 
                 // apply defaults to messages
                 if (!group.messageType || group.messageType == 2) group.messageType = false;
-                if (!group.message) group.message = 'Merry Christmas! Thanks for joining us today.';
+                if (group.messageType && (!group.message || group.message === '')) return problemGroups.push(index);
 
                 // if all error checks passed, mark it as valid
                 groups.push(group);
             });
 
             // notify the script user that there are invalid groups in the configuration
-            if (groups.length && problemGroups.length)
+            if (problemGroups.length)
                 log(
                     "There was at least one entry in your configuration which is invalid! This can happen if a required field is empty or if your group IDs don't point to a valid group on your TeamSpeak server! Any invalid entries will be skipped. The entries with the following indexes are invalid: " +
                         problemGroups
@@ -258,8 +263,11 @@ registerPlugin(
             // check what groups need to be added on the current date
             let fittingEntries = [];
             groups.forEach(group => {
-                if (group.date === todaySimple) return (fittingEntries = fittingEntries.concat(group));
-                if (group.annual && group.date === todayAnnual) return (fittingEntries = fittingEntries.concat(group));
+                if (group.annually) {
+                    if (group.date === todayAnnual) return (fittingEntries = fittingEntries.concat(group));
+                } else {
+                    if (group.date === todaySimple) return (fittingEntries = fittingEntries.concat(group));
+                }
             });
 
             // add groups to client and notify
