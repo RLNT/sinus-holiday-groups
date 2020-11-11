@@ -208,7 +208,8 @@ registerPlugin(
                 if (!group.annually && !group.year) return problemGroups.push(index);
 
                 // check if holiday group ids point to valid groups on teamspeak
-                if (group.ids.some(id => backend.getServerGroupByID(id) === undefined)) return problemGroups.push(index);
+                group.ids = group.ids.filter(id => backend.getServerGroupByID(id) !== undefined);
+                if (!group.ids.length) return problemGroups.push(index);
 
                 // use config entries to form a proper date
                 if (!group.annually) {
@@ -226,7 +227,7 @@ registerPlugin(
             });
 
             // notify the script user that there are invalid groups in the configuration
-            if (groups.length && problemGroups.length)
+            if (problemGroups.length)
                 log(
                     "There was at least one entry in your configuration which is invalid! This can happen if a required field is empty or if your group IDs don't point to a valid group on your TeamSpeak server! Any invalid entries will be skipped. The entries with the following indexes are invalid: " +
                         problemGroups
