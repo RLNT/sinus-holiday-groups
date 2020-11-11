@@ -91,7 +91,13 @@ registerPlugin(
                         title: 'Year > Define the year when the holiday group(s) should be assigned! This option will be ignored if you chose it to be annually. (*)',
                         indent: 2,
                         type: 'number',
-                        placeholder: '2021'
+                        placeholder: '2021',
+                        conditions: [
+                            {
+                                field: 'annually',
+                                value: 0
+                            }
+                        ]
                     },
                     {
                         name: 'messageType',
