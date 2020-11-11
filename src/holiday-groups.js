@@ -279,7 +279,7 @@ registerPlugin(
             if (client.isSelf()) return;
             if (config.blacklistedClients.includes(client.uid())) return;
             const clientGroups = client.getServerGroups().map(group => group.id());
-            if (clientGroups.some(group => config.blacklistedGroups.includes(group))) return;
+            if (config.blacklistedGroups.some(group => clientGroups.includes(group))) return;
 
             // check what groups need to be added on the current date
             let fittingEntries = [];
