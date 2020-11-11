@@ -109,7 +109,7 @@ registerPlugin(
                     {
                         name: 'message',
                         title:
-                            'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*] | placeholders: %name% - client name, %lb% - line break',
+                            'Message > Define the message the client should get when the group(s) get(s) assigned! Keep in mind that poke messages can only be 100 characters long. [*] | placeholders: %name% - client name, %amount% - amount of assigned groups, %lb% - line break',
                         indent: 2,
                         type: 'multiline',
                         placeholder: 'Merry Christmas! Thanks for joining us today.'
@@ -279,7 +279,7 @@ registerPlugin(
             if (client.isSelf()) return;
             if (config.blacklistedClients.includes(client.uid())) return;
             const clientGroups = client.getServerGroups().map(group => group.id());
-            if (clientGroups.some(group => config.blacklistedGroups.includes(group))) return;
+            if (config.blacklistedGroups.some(group => clientGroups.includes(group))) return;
 
             // check what groups need to be added on the current date
             let fittingEntries = [];
@@ -303,9 +303,9 @@ registerPlugin(
 
                 if (!entry.messageType || !addedGroups) return;
                 if (entry.messageType == 0) {
-                    client.poke(entry.message.replace('%name%', client.name()));
+                    client.poke(entry.message.replace('%name%', client.name()).replace('%amount%', addedGroups));
                 } else {
-                    client.chat(entry.message.replace('%name%', client.name()).replace('%lb%', '\n'));
+                    client.chat(entry.message.replace('%name%', client.name()).replace('%amount%', addedGroups).replace('%lb%', '\n'));
                 }
             });
         }
