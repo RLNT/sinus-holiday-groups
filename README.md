@@ -63,7 +63,7 @@ This project is licensed under the [GNU GPL v3.0][license].
 <!-- Links -->
 [sinus]: https://www.sinusbot.com/
 [discord]: https://discordapp.com/invite/Q3qxws6
-[resource-page]: https://forum.sinusbot.com/resources/holiday-groups
+[resource-page]: https://forum.sinusbot.com/resources/holiday-groups.510/
 [releases]: https://github.com/RLNT/sinus-holiday-groups/releases
 [config-guide]: CONFIGURATION.md
 [requester]: https://forum.sinusbot.com/members/einfachrobin.1563/
