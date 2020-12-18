@@ -95,7 +95,7 @@ registerPlugin(
                         conditions: [
                             {
                                 field: 'annually',
-                                value: 0
+                                value: 1
                             }
                         ]
                     },
