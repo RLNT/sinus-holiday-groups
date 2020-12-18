@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Released]
 
+## [1.0.1] - 2020-12-18
+
+### Fixed
+- year being requested on annually event
+
+
 ## [1.0.0] - 2020-11-16
 
 - initial release
