@@ -3,7 +3,7 @@
     Requested by: EinfachRobin
     License: GNU GPL v3.0
     Repository: https://forum.sinusbot.com/resources/holiday-groups.510/
-    Resource-Page: https://forum.sinusbot.com/resources/holiday-groups/
+    Resource-Page: https://forum.sinusbot.com/resources/holiday-groups.510/
     Discord: https://discord.com/invite/Q3qxws6
 */
 registerPlugin(
