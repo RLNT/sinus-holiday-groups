@@ -167,6 +167,20 @@ registerPlugin(
         }
 
         /**
+         * Send a message to the SinusBot instance log in dev mode
+         * @param {String} message > the message to send
+         * @param {any} param > the optional parameter to attach
+         * @returns {void} > nothing
+         */
+        function devLog(message, param) {
+            if (param) {
+                console.log('Holiday-Groups-Dev > ' + message, param);
+            } else {
+                console.log('Holiday-Groups-Dev > ' + message);
+            }
+        }
+
+        /**
          * Wait for the backend to be online/connected each given amount of time for a given amount of tries
          * @param {Number} attempts > the amount of tries the function should check for the backend to be online/connected
          * @param {Number} wait > the amount of time (in seconds) that should be waited between each try
@@ -178,12 +192,12 @@ registerPlugin(
                 const timer = setInterval(() => {
                     if (backend.isConnected()) {
                         clearInterval(timer);
-                        if (config.dev) log('waitForBackend() took ' + attempt + ' attempts with a timer of ' + wait + ' seconds to resolve');
+                        if (config.dev) devLog('waitForBackend() took ' + attempt + ' attempts with a timer of ' + wait + ' seconds to resolve');
                         success();
                         return;
                     } else if (attempt > attempts) {
                         clearInterval(timer);
-                        if (config.dev) log('waitForBackend() failed at ' + attempt + '. attempt with a timer of ' + wait + ' seconds');
+                        if (config.dev) devLog('waitForBackend() failed at ' + attempt + '. attempt with a timer of ' + wait + ' seconds');
                         fail('backend');
                         return;
                     }
@@ -314,8 +328,8 @@ registerPlugin(
         event.on('load', () => {
             // dev mode config dump
             if (config.dev) {
-                console.log('Script-Config:', Object.entries(scriptConfig));
-                console.log('Validated-Config:', Object.entries(config));
+                devLog('Script-Config:', Object.entries(scriptConfig));
+                devLog('Validated-Config:', Object.entries(config));
             }
 
             // error prevention that needs script deactivation
@@ -359,7 +373,7 @@ registerPlugin(
             if (!groups.length) return log('There are no valid holiday groups set in your script configuration! There might be further output in the log. Deactivating script...');
 
             // validated groups config dump
-            if (config.dev) console.log('groups:', Object.entries(groups));
+            if (config.dev) devLog('groups:', Object.entries(groups));
 
             // get current date
             updateDate();
