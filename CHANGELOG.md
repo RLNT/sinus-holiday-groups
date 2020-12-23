@@ -30,4 +30,5 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 <!-- Versions -->
 [Unreleased]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.0...HEAD
 [Released]: https://github.com/RLNT/sinus-holiday-groups/releases
+[1.0.1]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.0..v1.0.1
 [1.0.0]: https://github.com/RLNT/sinus-holiday-groups/releases/v1.0.0
