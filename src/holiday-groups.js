@@ -289,13 +289,20 @@ registerPlugin(
                 if (group.messageType && (!group.message || group.message === '')) return problemGroups.push(index);
 
                 // check config options for access control
-                if (!group.accesControl || group.accessControl == 1) {
+                if (!group.accessControl || group.accessControl == 1 || !group.accessControlType) {
                     group.accessControl = false;
                 } else {
                     group.accessControl = true;
+                    group.accessControlClients = group.accessControlClients || [];
+                    group.accessControlGroups = group.accessControlGroups || [];
                 }
-                if (group.accessControlType == 1 && (!group.accessControlClients || !group.accessControlClients.length)) return problemGroups.push(index);
-                if (group.accessControlType == 2 && (!group.accessControlClients || !group.accessControlClients.length)) group.accessControl = false;
+                if (!group.accessControlClients.length && !group.accessControlGroups.length) {
+                    if (group.accessControlType == 1) {
+                        group.accessControl = false;
+                    } else {
+                        return problemGroups.push(index);
+                    }
+                }
 
                 // if all error checks passed, mark it as valid
                 groups.push(group);
@@ -360,8 +367,13 @@ registerPlugin(
 
             // check access to group, add groups to client and notify
             fittingEntries.forEach(entry => {
-                if (entry.accessControlClients.includes(client.uid())) return;
-                if (entry.accessControlGroups.some(group => clientGroups.includes(group))) return;
+                if (entry.accessControl) {
+                    if (entry.accessControlType == 0) {
+                        if (!entry.accessControlClients.includes(client.uid()) && !entry.accessControlGroups.some(group => clientGroups.includes(group))) return;
+                    } else {
+                        if (entry.accessControlClients.includes(client.uid()) || entry.accessControlGroups.some(group => clientGroups.includes(group))) return;
+                    }
+                }
 
                 let addedGroups = 0;
                 entry.ids.forEach(id => {
