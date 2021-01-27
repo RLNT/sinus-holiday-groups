@@ -2,14 +2,14 @@
     Author: RLNT
     Requested by: EinfachRobin
     License: GNU GPL v3.0
-    Repository: https://github.com/RLNT/sinus-holiday-groups
-    Resource-Page: https://forum.sinusbot.com/resources/holiday-groups/
+    Repository: https://forum.sinusbot.com/resources/holiday-groups.510/
+    Resource-Page: https://forum.sinusbot.com/resources/holiday-groups.510/
     Discord: https://discord.com/invite/Q3qxws6
 */
 registerPlugin(
     {
         name: 'Holiday Groups',
-        version: '1.0.0',
+        version: '1.0.1',
         description: 'With this script, the bot will automatically assign servergroups on specific days.',
         author: 'RLNT',
         backends: ['ts3'],
@@ -95,7 +95,7 @@ registerPlugin(
                         conditions: [
                             {
                                 field: 'annually',
-                                value: 0
+                                value: 1
                             }
                         ]
                     },
