@@ -113,6 +113,50 @@ registerPlugin(
                         indent: 2,
                         type: 'multiline',
                         placeholder: 'Merry Christmas! Thanks for joining us today.'
+                    },
+                    {
+                        name: 'accessControl',
+                        title: 'Accesscontrol > Do you want to limit the access to this group?',
+                        indent: 2,
+                        type: 'select',
+                        options: ['Yes', 'No']
+                    },
+                    {
+                        name: 'accessControlType',
+                        title: 'Accesscontrol-Type > How do you want to controll the access to this group?',
+                        indent: 4,
+                        type: 'select',
+                        options: ['Whitelist', 'Blacklist'],
+                        conditions: [
+                            {
+                                field: 'accessControl',
+                                value: 0
+                            }
+                        ]
+                    },
+                    {
+                        name: 'accessControlClients',
+                        title: 'Accesscontrol-Clients > Define the list of client UIDs that are allowed/denied access to this group!',
+                        indent: 4,
+                        type: 'strings',
+                        conditions: [
+                            {
+                                field: 'accessControl',
+                                value: 0
+                            }
+                        ]
+                    },
+                    {
+                        name: 'accessControlGroups',
+                        title: 'Accesscontrol-Groups > Define the list of group IDs that are allowed/denied access to this group!',
+                        indent: 4,
+                        type: 'strings',
+                        conditions: [
+                            {
+                                field: 'accessControl',
+                                value: 0
+                            }
+                        ]
                     }
                 ]
             },
@@ -244,6 +288,15 @@ registerPlugin(
                 if (!group.messageType || group.messageType == 2) group.messageType = false;
                 if (group.messageType && (!group.message || group.message === '')) return problemGroups.push(index);
 
+                // check config options for access control
+                if (!group.accesControl || group.accessControl == 1) {
+                    group.accessControl = false;
+                } else {
+                    group.accessControl = true;
+                }
+                if (group.accessControlType == 1 && (!group.accessControlClients || !group.accessControlClients.length)) return problemGroups.push(index);
+                if (group.accessControlType == 2 && (!group.accessControlClients || !group.accessControlClients.length)) group.accessControl = false;
+
                 // if all error checks passed, mark it as valid
                 groups.push(group);
             });
@@ -305,8 +358,11 @@ registerPlugin(
                 }
             });
 
-            // add groups to client and notify
+            // check access to group, add groups to client and notify
             fittingEntries.forEach(entry => {
+                if (entry.accessControlClients.includes(client.uid())) return;
+                if (entry.accessControlGroups.some(group => clientGroups.includes(group))) return;
+
                 let addedGroups = 0;
                 entry.ids.forEach(id => {
                     if (!clientGroups.includes(id)) {
