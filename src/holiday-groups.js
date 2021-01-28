@@ -9,7 +9,7 @@
 registerPlugin(
     {
         name: 'Holiday Groups',
-        version: '1.0.1',
+        version: '1.1.0',
         description: 'With this script, the bot will automatically assign servergroups on specific days.',
         author: 'RLNT',
         backends: ['ts3'],
