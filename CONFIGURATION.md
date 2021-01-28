@@ -58,7 +58,7 @@ Please click the option you want to configure to get more information.
 - enter the client UIDs
 
 *Info*:
-- defines if a client is ignored by the script
+- defines if a client is ignored by the script globally
 - this means the client also gets no notifications
 </details>
 <details>
@@ -71,7 +71,7 @@ Please click the option you want to configure to get more information.
 - enter the group IDs
 
 *Info*:
-- defines if a group is ignored by the script
+- defines if a group is ignored by the script globally
 - this means the group also gets no notifications
 </details>
 
@@ -176,6 +176,60 @@ Please click the option you want to configure to get more information.
 *Info*:
 - defines the text which is used in the notification for the client
 - keep in mind that a poke message is limited to 100 characters
+</details>
+<details>
+    <summary>
+        Access-Control
+    </summary>
+
+*Details*:
+- optional option | default value: `No`
+- select `Yes` or `No`
+
+*Info*:
+- defines if you want to specify access to this specific group for special clients or groups
+
+*Advanced Options*:
+- the following options are only shown if you selected `Yes` for the *Access-Control*
+
+    <details>
+        <summary>
+            Access-Control-Type
+        </summary>
+
+    *Details*:
+    - semi-required option | default value: `none`
+    - select `Whitelist` or `Blacklist`
+
+    *Info*:
+    - defines if the following options are counted as whitelist or blacklist
+    </details>
+    <details>
+        <summary>
+            Access-Control-Clients
+        </summary>
+
+    *Details*:
+    - optional option | default value: `none`
+    - enter the client UIDs
+
+    *Info*:
+    - defines if a client is ignored for this specific group
+    - this means the client also gets no notifications
+    </details>
+    <details>
+        <summary>
+            Access-Control-Groups
+        </summary>
+
+    *Details*:
+    - optional option | default value: `none`
+    - enter the group IDs
+
+    *Info*:
+    - defines if a group is ignored for this specific group
+    - this means the group also gets no notifications
+    </details>
 </details>
 
 ---
