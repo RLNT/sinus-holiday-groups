@@ -116,14 +116,14 @@ registerPlugin(
                     },
                     {
                         name: 'accessControl',
-                        title: 'Accesscontrol > Do you want to limit the access to this group?',
+                        title: 'Access-Control > Do you want to limit the access to the holiday group(s)?',
                         indent: 2,
                         type: 'select',
                         options: ['Yes', 'No']
                     },
                     {
                         name: 'accessControlType',
-                        title: 'Accesscontrol-Type > How do you want to controll the access to this group?',
+                        title: 'Access-Control-Type > What type of limiting do you want?',
                         indent: 4,
                         type: 'select',
                         options: ['Whitelist', 'Blacklist'],
@@ -136,7 +136,7 @@ registerPlugin(
                     },
                     {
                         name: 'accessControlClients',
-                        title: 'Accesscontrol-Clients > Define the list of client UIDs that are allowed/denied access to this group!',
+                        title: 'Access-Control-Clients > Define the list of client UIDs that are allowed to get or are exluded from getting the holiday group(s)!',
                         indent: 4,
                         type: 'strings',
                         conditions: [
@@ -148,7 +148,7 @@ registerPlugin(
                     },
                     {
                         name: 'accessControlGroups',
-                        title: 'Accesscontrol-Groups > Define the list of group IDs that are allowed/denied access to this group!',
+                        title: 'Access-Control-Groups > Define the list of group IDs that are allowed to get or are exluded from getting the holiday group(s)!',
                         indent: 4,
                         type: 'strings',
                         conditions: [
