@@ -293,14 +293,15 @@ registerPlugin(
                     group.accessControl = false;
                 } else {
                     group.accessControl = true;
+
                     group.accessControlClients = group.accessControlClients || [];
                     group.accessControlGroups = group.accessControlGroups || [];
-                }
-                if (!group.accessControlClients.length && !group.accessControlGroups.length) {
-                    if (group.accessControlType == 1) {
-                        group.accessControl = false;
-                    } else {
-                        return problemGroups.push(index);
+                    if (!group.accessControlClients.length && !group.accessControlGroups.length) {
+                        if (group.accessControlType == 1) {
+                            group.accessControl = false;
+                        } else {
+                            return problemGroups.push(index);
+                        }
                     }
                 }
 
