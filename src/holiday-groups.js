@@ -123,7 +123,7 @@ registerPlugin(
                     },
                     {
                         name: 'accessControlType',
-                        title: 'Access-Control-Type > What type of limiting do you want?',
+                        title: 'Access-Control-Type > What type of limiting do you want? [*]',
                         indent: 4,
                         type: 'select',
                         options: ['Whitelist', 'Blacklist'],
