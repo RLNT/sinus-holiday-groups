@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 
 ## [Released]
 
+## [1.1.1] - 2021-01-28
+
+### Fixed
+- access control array checking
+
+
 ## [1.1.0] - 2021-01-28
 
 ### Added
@@ -39,6 +45,7 @@ The format is based on [Keep a Changelog][Keep a Changelog] and this project adh
 <!-- Versions -->
 [Unreleased]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.0...HEAD
 [Released]: https://github.com/RLNT/sinus-holiday-groups/releases
+[1.1.1]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.1.0..v1.1.1
 [1.1.0]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.1..v1.1.0
 [1.0.1]: https://github.com/RLNT/sinus-holiday-groups/compare/v1.0.0..v1.0.1
 [1.0.0]: https://github.com/RLNT/sinus-holiday-groups/releases/v1.0.0
